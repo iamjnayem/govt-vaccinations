@@ -1,0 +1,6 @@
+@GovtVaccination_HostAddress = http://localhost:5107
+
+GET {{GovtVaccination_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
