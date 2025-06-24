@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GovtVaccination.Data;
+using GovtVaccination.Data.Seeders;
+using GovtVaccination.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +15,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
     ));
 
+
 var app = builder.Build();
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -33,6 +38,12 @@ if (app.Environment.IsDevelopment())
                 .OrderBy(s => s) // Optional: sort for readability
         )
     );
+    
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        VaccineCenterSeeder.Seed(db);
+    }
 }
 
 app.UseHttpsRedirection();

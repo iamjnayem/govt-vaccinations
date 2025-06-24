@@ -11,6 +11,8 @@ public partial class Vaccinees
 
     public int Status { get; set; }
 
+    public long VaccineCenterId { get; set; }
+
     public int CreatedAt { get; set; }
 
     public int UpdatedAt { get; set; }
