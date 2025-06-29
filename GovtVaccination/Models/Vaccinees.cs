@@ -13,7 +13,7 @@ public partial class Vaccinees
 
     public long VaccineCenterId { get; set; }
 
-    public int CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-    public int UpdatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 }

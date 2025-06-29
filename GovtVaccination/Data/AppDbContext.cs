@@ -33,13 +33,16 @@ public partial class AppDbContext : DbContext
                 .HasColumnType("text")
                 .HasColumnName("address");
             entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("timestamp")
                 .HasColumnName("created_at");
             entity.Property(e => e.DailyLimit).HasColumnName("daily_limit");
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .HasColumnName("name");
-            entity.Property(e => e.Status).HasColumnName("status");
+            entity.Property(e => e.Status)
+                .HasDefaultValueSql("'1'")
+                .HasColumnName("status");
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("timestamp")
                 .HasColumnName("updated_at");
@@ -55,9 +58,14 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Contact)
                 .HasMaxLength(100)
                 .HasColumnName("contact");
-            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnType("timestamp")
+                .HasColumnName("created_at");
             entity.Property(e => e.Status).HasColumnName("status");
-            entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
+            entity.Property(e => e.UpdatedAt)
+                .HasColumnType("timestamp")
+                .HasColumnName("updated_at");
             entity.Property(e => e.VaccineCenterId).HasColumnName("vaccine_center_id");
         });
 

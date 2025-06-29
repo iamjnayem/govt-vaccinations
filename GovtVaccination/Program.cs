@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GovtVaccination.Data;
 using GovtVaccination.Data.Seeders;
-using GovtVaccination.Models;
+// using GovtVaccination.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,7 +30,7 @@ if (app.Environment.IsDevelopment())
                     var routePattern = e.RoutePattern.RawText;
                     var httpMethods = e.Metadata.OfType<HttpMethodMetadata>().FirstOrDefault()?.HttpMethods;
                     var controllerAction = e.Metadata.OfType<Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor>().FirstOrDefault();
-
+    
                     return $"Route: {routePattern ?? "(No Pattern)"} " +
                            $"Methods: {(httpMethods != null ? string.Join(", ", httpMethods) : "ANY")} " +
                            $"Action: {(controllerAction != null ? $"{controllerAction.ControllerName}.{controllerAction.ActionName}" : "(Non-MVC)")}";

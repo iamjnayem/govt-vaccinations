@@ -16,9 +16,9 @@ public static class VaccineCenterSeeder
                 .RuleFor(vc => vc.Status, f => f.PickRandom(new[] { 0, 1 }))
                 .RuleFor(vc => vc.CreatedAt, f => f.Date.Past(1))
                 .RuleFor(vc => vc.UpdatedAt, (f, vc) => vc.CreatedAt.AddDays(f.Random.Int(1, 100)));
-
+    
             var fakeCenters = faker.Generate(50); // Generate 50 centers
-
+    
             context.VaccineCenters.AddRange(fakeCenters);
             context.SaveChanges();
         }
